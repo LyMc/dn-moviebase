@@ -82,7 +82,7 @@ function SearchResults() {
             <Button
               as="a"
               variant="link"
-              rightIcon={<Badge>{release_date.substr(0, 4)}</Badge>}
+              rightIcon={<Badge>{release_date}</Badge>}
             >
               <Text as="span">{title} </Text>
             </Button>
