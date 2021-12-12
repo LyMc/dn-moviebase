@@ -1,34 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Moviebase
 
-## Getting Started
+![movie.png](./docs/movie.png)
 
-First, run the development server:
+## Primii pași
 
-```bash
-npm run dev
-# or
-yarn dev
+1. Fork la acest repo
+2. `git clone` la forkul nou creat (nu acest repo)
+3. `npm install` pentru a descărca toate dependențele necesare
+4. Creează un branch nou `project` din `main` și lucrează pe el
+5. Oferă-mi access la fork, de pe GitHub `settings/access`, invită un colaborator, caută
+   `victor@locoman.ro`
+6. Adaugă 2-3 colegi la colaboratori ca să vă ajutați reciproc prin feedback la cod/soluție
+7. Copiază fișierul `.env.example` în `.env.local` și completează-l
+
+## Rularea proiectului
+
+1. rulează instrucțiunea `npm run dev` - va porni serverul local
+2. intră pe http://localhost:3000/, ar trebui să vezi mesajul "Moviebase is up and running"
+
+## Tehnologii folosite
+
+### [next.js](https://nextjs.org/docs/getting-started)
+
+Este serverul nostru și are grijă ca partea de React să se încarce cum trebuie.
+
+### [react](https://reactjs.org/docs/hello-world.html)
+
+Se ocupă de UI. Noi scriem componente care depind de `state`. React are grijă să afișeze în DOM
+componentele noastre în dependență de `state`. Matematic vorbind:
+
+```
+UI = React(state)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Folosim [🪝hooks](https://reactjs.org/docs/hooks-intro.html) pentru cod frumos.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### [chakra-ui](https://chakra-ui.com/docs/principles)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Ne permite să scriem CSS fără să scriem CSS 🤩. Și mai are și multe componente gata făcute. Nu e
+nevoie să-l folosiți pentru a scrie cod, CSS-ul poate fi folosit în continuare. Dar, există opțiunea
+să o faceți mai simplu, diferit.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### [swr](https://swr.vercel.app/)
 
-## Learn More
+Are grijă de operațiile async din React.
 
-To learn more about Next.js, take a look at the following resources:
+### [mongodb](https://docs.mongodb.com/drivers/node/usage-examples)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O bază de date populară.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### [TMDB](https://developers.themoviedb.org/3/search/search-movies)
 
-## Deploy on Vercel
+The Movie Database oferă un API puternic, bogat în funcționalități. De la ei vom lua filmele și tot
+ce ne interesează despre filme.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Q: E necesar să folosesc toate aceste instrumente?
+
+A: Nu e necesar, sunt doar alegerea mea. Te invit să înlocuiești oricare din ele după bun plac. E un
+exercițiu bun să faci același proiect cu tehnologii diferite.
+
+## Arhitectura aplicației
+
+### Problema
+
+Utilizatorul dorește să privească un film și are nevoie de ajutor să aleagă filmul potrivit.
+
+### Soluția
+
+Ii oferim o aplicație prin care să poată salva filmele favorite și filmele privite. Pe baza acestor
+informații vom oferi recomandări.
+
+Vom face o aplicație web unde utilizatorul va putea căuta filmele preferate, și apoi le poate salva
+în favorite/istoric. Informația despre filme va fi luată de pe TMDB prin API-ul lor. Stocarea
+informațiilor se va face în baza noastră de date, care o vom putea accesa printr-un server.
+Recomandările le vom face pe baza informațiilor din BD.
+
+## Structura proiectului
+
+- `components` - componente de React, orice nu este pagină
+- `pages` - paginile aplicației, pentru fiecare fișier, va exista o rută
+  - `api` - rutele de backend, asemănător cu cele din express
+- `public` - fișierele statice pentru React
+- `utils` - Câteva funcții refolosite prin cod
+- `env.example` - fișierul de configurare ce trebuie copiat în `.env.local`
+
+## Sarcini
+
+Acum să trecem la muncă.
+
+1. Deschide `README.md` în VS Code. O să verzi sursa textului în format Markdown. E chiar simpatic,
+   dar dacă vrei să-l vezi ca și pe GitHub, apasă `Preview` din bara de sus. Acum, după ce ai
+   completat un task, ~~✂️ îl tai de aici~~.
+2. _Vom adăuga partea de watchlist, istoric, recomandări..._
