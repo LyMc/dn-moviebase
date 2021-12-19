@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Head from 'next/head';
 import useSWR from 'swr';
 import { buildImageUrl } from '../../utils/api';
 import {
@@ -15,11 +16,11 @@ import {
   Text,
 } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
-import Head from 'next/head';
+import HistoryButton from '../../components/HistoryButton';
 
 const MovieContent = () => {
   const { id } = useRouter().query;
-  const { data, error } = useSWR(`/api/movies/${id}`);
+  const { data, error } = useSWR(id && `/api/movies/${id}`);
 
   if (error) {
     return (
@@ -41,6 +42,9 @@ const MovieContent = () => {
         <title>{data.title}</title>
       </Head>
       <Box minW="300px" pos="relative">
+        <HStack pos="absolute" zIndex={1} top={2} right={2}>
+          <HistoryButton />
+        </HStack>
         <Image
           src={buildImageUrl(data.poster_path, 'w300')}
           alt="Movie poster"
