@@ -20,7 +20,7 @@ import HistoryButton from '../../components/HistoryButton';
 
 const MovieContent = () => {
   const { id } = useRouter().query;
-  const { data, error } = useSWR(`/api/movies/${id}`);
+  const { data, error } = useSWR(id && `/api/movies/${id}`);
 
   if (error) {
     return (

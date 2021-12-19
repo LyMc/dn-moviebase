@@ -8,9 +8,3 @@ export const swrOptions = {
 
 export const buildImageUrl = (path, size = 'original') =>
   `https://image.tmdb.org/t/p/${size}${path}`;
-
-export const dbConnect = () => {
-  if (global.connected) return;
-  global.connected = true;
-  mongoose.connect(process.env.MONGO_URL);
-};
