@@ -36,6 +36,9 @@ const MovieContent = () => {
       </Center>
     );
   }
+  if (data.success === false) {
+    return <Text color="red">{data.status_message}</Text>;
+  }
   return (
     <Stack direction={['column', 'row']} spacing={4}>
       <Head>
