@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+
+import { buildImageUrl } from '../utils/api';
 import Link from 'next/link';
 import useSWR from 'swr';
 import {
@@ -14,10 +16,18 @@ import {
   InputRightElement,
   VStack,
   Button,
+  Box,
+  Image,
+  Stack,
+  Flex,
+  Grid,
+  SimpleGrid,
+  Center,
   Badge,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Layout from '../components/Layout';
+
 
 function SearchBar() {
   const router = useRouter();
@@ -37,9 +47,10 @@ function SearchBar() {
     }
   };
 
+  
   return (
     <InputGroup as="form" onSubmit={handleSearch}>
-      <Input
+   <Input
         placeholder="Search for a movie..."
         value={text}
         onChange={(event) => setText(event.target.value)}
@@ -75,21 +86,31 @@ function SearchResults() {
     return <Text>No results</Text>;
   }
   return (
-    <UnorderedList stylePosition="inside">
-      {data.results.map(({ id, title, release_date }) => (
-        <ListItem key={id}>
+<SimpleGrid minChildWidth='180px' spacing='40px'>
+      {data.results.map(({ id, poster_path, title, release_date }) => (
+          <Box maxW='280px' borderWidth='2px' borderRadius='lg' overflow='hidden' key={id}>
+      <Link href={`/movies/${id}`} passHref>
+        <Image src={buildImageUrl(poster_path)}
+          height="330" layout="responsive"  alt={poster_path}/>
+          </Link>
           <Link href={`/movies/${id}`} passHref>
             <Button
               as="a"
               variant="link"
               rightIcon={<Badge>{release_date}</Badge>}
-            >
-              <Text as="span">{title} </Text>
+              >
+             <Center
+          fontWeight='semibold'
+          fontSize='sm'
+          padding='10px'
+        >
+          {title}
+        </Center>
             </Button>
-          </Link>
-        </ListItem>
+            </Link>
+        </Box>
       ))}
-    </UnorderedList>
+</SimpleGrid>
   );
 }
 
@@ -105,3 +126,4 @@ export default function Search() {
     </Layout>
   );
 }
+

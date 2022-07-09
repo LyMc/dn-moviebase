@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <SWRConfig value={swrOptions}>
-        <Component {...pageProps} />
+        <Component {...pageProps}/>
       </SWRConfig>
     </ChakraProvider>
   );

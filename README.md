@@ -96,3 +96,4 @@ Acum să trecem la muncă.
 4. Implementează recomandările. Pagina cu recomandări ar trebui să includă câteva filme sugerate utilizatorului. Aici poți să te bazezi pe watchlist, istoric și TMDB (care are câteva api-uri utile pentru asta). Poți face mai multe tipuri de recomandări
 5. Combină toate funcționalitățile pentru a crea homepage-ul. Aș pune câte o parte din fiecare funcționalitate, de exemplu 3 filme din istoric, 3 filme din watchlist, 3 recomandări, un search rapid, etc...
 6. Bonus. Te provoc să adaugi ceva nou, orice consideri interesant
+

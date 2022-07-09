@@ -11,6 +11,7 @@ import {
   Spacer,
   VStack,
   Grid,
+  Image
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
@@ -26,7 +27,7 @@ function Header() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box bg="purple.500">
+    <Box bg="purple.300">
       <Container>
         <Stack
           as="nav"
@@ -36,8 +37,9 @@ function Header() {
           py="1.5rem"
         >
           <HStack justify="space-between">
-            <MenuItem href="/" mr={8}>
-              <Heading size="lg">Moviebase</Heading>
+          <Image src='/favicon.ico' h="50px" alt="icon" />
+            <MenuItem href="/">
+              <Heading size="lg" ml={2}  me={20}>Moviebase</Heading>
             </MenuItem>
 
             <Box display={['block', , 'none']} onClick={onToggle}>
@@ -52,7 +54,7 @@ function Header() {
             justify="start"
             align={['start', , 'center']}
             display={[isOpen ? 'flex' : 'none', , 'flex']}
-            spacing={4}
+            spacing={10}
           >
             <MenuItem href="/search">Search</MenuItem>
             <MenuItem href="/" disabled>
